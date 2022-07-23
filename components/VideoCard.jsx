@@ -47,11 +47,11 @@ const VideoCard = ({ post }) => {
             <Link href="/">
               <div className="flex items-center gap-2">
                 <p className="flex items-center gap-2 md:text-base font-bold text-primary">
-                  {post.postedBy.userName}
+                  {post.postedBy.name}
                   <GoVerified className="text-blue-400 " />
                 </p>
                 <p className="capitalize font-medium text-xs hidden md:block text-gray-500">
-                  {post.postedBy.userName}
+                  {post.postedBy.name}
                 </p>
               </div>
             </Link>

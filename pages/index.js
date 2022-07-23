@@ -14,7 +14,7 @@ export default function Home({ videos }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {videos.length ? (
-        videos.map((video) => <VideoCard post={video} />)
+        videos.map((video) => <VideoCard key={video._id} post={video} />)
       ) : (
         <NoResults text={"No Videos"} />
       )}
