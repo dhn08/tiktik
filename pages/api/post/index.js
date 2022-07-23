@@ -10,5 +10,14 @@ export default async function handler(req, res) {
     } catch (error) {
       res.status(200).json({ msg: error.message });
     }
+  } else if (req.method === "POST") {
+    try {
+      const document = req.body;
+      await client
+        .create(document)
+        .then(() => res.status(201).json("post created"));
+    } catch (error) {
+      res.status(200).json({ msg: error.message });
+    }
   }
 }

@@ -11,24 +11,25 @@ const VideoCard = ({ post }) => {
   const [playing, setPlaying] = useState(false);
   const [isMute, setIsMute] = useState(false);
   const videoRef = useRef(null);
+
   const onVideoPress = () => {
     if (playing) {
-      videoRef.current.pause();
+      videoRef?.current?.pause();
       setPlaying(false);
     } else {
-      videoRef.current.play();
+      videoRef?.current?.play();
       setPlaying(true);
     }
   };
-  const onVideoMute = () => {
-    if (isMute) {
-      videoRef.current.pause();
-      setPlaying(false);
-    } else {
-      videoRef.current.play();
-      setPlaying(true);
-    }
-  };
+  // const onVideoMute = () => {
+  //   if (isMute) {
+  //     videoRef.current.pause();
+  //     setPlaying(false);
+  //   } else {
+  //     videoRef.current.play();
+  //     setPlaying(true);
+  //   }
+  // };
   return (
     <div className="flex flex-col border-b-2 border-gray-200 pb-6">
       <div>
@@ -64,12 +65,14 @@ const VideoCard = ({ post }) => {
           onMouseLeave={() => setIsHover(false)}
           className="rounded-3xl"
         >
-          <Link href="/">
-            <video
-              ref={videoRef}
-              className="lg:w-[600px] h-[300px] md:h[400px] lg:[530px] w-[200px] rounded-2xl cursor-pointer bg-gray-100"
-              src={post.video.asset.url}
-            ></video>
+          <Link href={`/detail/${post._id}`} passHref>
+            <a>
+              <video
+                ref={videoRef}
+                className="lg:w-[600px] h-[300px] md:h[400px] lg:[530px] w-[200px] rounded-2xl cursor-pointer bg-gray-100"
+                src={post.video.asset.url}
+              ></video>
+            </a>
           </Link>
           {isHover && (
             <div className="absolute  bottom-6 left-8 md:left-14 lg:left-0 flex gap-10 lg:justify-between w-[100px] md:w-[50px] cursor-pointer">

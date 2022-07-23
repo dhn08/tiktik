@@ -14,7 +14,7 @@ export default function Home({ videos }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {videos.length ? (
-        videos.map((video) => <VideoCard key={video.id} post={video} />)
+        videos.map((video) => <VideoCard key={video._id} post={video} />)
       ) : (
         <NoResults text={"No Videos"} />
       )}
@@ -27,6 +27,7 @@ export async function getServerSideProps(context) {
   const query = allPostsQuery();
 
   const data = await client.fetch(query);
+  console.log(data);
   return {
     props: { videos: data }, // will be passed to the page component as props
   };

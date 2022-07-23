@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NextPage } from "next";
+
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { AiFillHome, AiOutlineMenu } from "react-icons/ai";
@@ -34,19 +34,7 @@ const Sidebar = () => {
                 </div>
               </Link>
             </div>
-            {!userProfile && (
-              <div className="px-2 py-4 hidden xl:block">
-                <p className="text-gray-400 ">Log in to like and comment</p>
-                <div className="pr-4">
-                  <button
-                    className="bg-white text-lg cursor-pointer text-[#F51997] border-[1px] border-[#F51997] font-semibold py-3 px-6 rounded-md 
-                  outline-none w-full mt-3 hover:text-white hover:bg-[#F51997]"
-                  >
-                    Login
-                  </button>
-                </div>
-              </div>
-            )}
+
             <Discover />
             <Suggestions />
             <Footer />
