@@ -4,14 +4,14 @@ import Link from "next/link";
 import { GoVerified } from "react-icons/go";
 import useAuthStore from "../store/authStore";
 const Suggestions = () => {
-  const { fetchAllUsers, allUsers } = useAuthStore();
-  useEffect(() => {
-    console.log("Inside useffect");
-    const getUsers = async () => {
-      await fetchAllUsers();
-    };
-    getUsers();
-  }, []);
+  const { allUsers } = useAuthStore();
+  // useEffect(() => {
+  //   console.log("Inside useffect");
+  //   const getUsers = async () => {
+  //     await fetchAllUsers();
+  //   };
+  //   getUsers();
+  // }, []);
   return (
     <div className="xl:border-b-2 border-gray-200 pb-4">
       <p className="text-gray-500 font-semibold mt-3 hidden xl:block">

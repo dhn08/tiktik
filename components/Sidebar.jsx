@@ -9,10 +9,17 @@ import Discover from "./Discover";
 import Suggestions from "./Suggestions";
 import Footer from "./Footer";
 import ErrorBoundary from "./ErrorBoundary";
+import useAuthStore from "../store/authStore";
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(true);
+  const { fetchAllUsers, allUsers } = useAuthStore();
   useEffect(() => {
-    console.log("Hello from slidebar");
+    console.log("Inside useffect");
+    const getUsers = async () => {
+      await fetchAllUsers();
+    };
+
+    getUsers();
   }, []);
 
   const userProfile = false;
