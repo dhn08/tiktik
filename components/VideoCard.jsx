@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { GoVerified } from "react-icons/go";
@@ -11,7 +11,7 @@ const VideoCard = ({ post }) => {
   const [playing, setPlaying] = useState(false);
   const [isMute, setIsMute] = useState(false);
   const videoRef = useRef(null);
-
+  // console.log("VideoVard:", post);
   const onVideoPress = () => {
     if (playing) {
       videoRef?.current?.pause();
@@ -30,29 +30,34 @@ const VideoCard = ({ post }) => {
   //     setPlaying(true);
   //   }
   // };
+  useEffect(() => {
+    if (videoRef?.current) {
+      videoRef.current.muted = isMute;
+    }
+  }, [isMute]);
   return (
     <div className="flex flex-col border-b-2 border-gray-200 pb-6">
       <div>
         <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
           <div className="md:w-16 md:h-16 w-10 h-10">
-            <Link href="/">
+            <Link href={`/profile/${post.postedBy._id}`}>
               <Image
                 width={62}
                 height={62}
                 className="rounded-full"
-                src={post.postedBy.image}
+                src={post?.postedBy?.image}
               />
             </Link>
           </div>
           <div>
-            <Link href="/">
+            <Link href={`/profile/${post.postedBy._id}`}>
               <div className="flex items-center gap-2">
                 <p className="flex items-center gap-2 md:text-base font-bold text-primary">
-                  {post.postedBy.userName}
+                  {post.postedBy?.userName}
                   <GoVerified className="text-blue-400 " />
                 </p>
                 <p className="capitalize font-medium text-xs hidden md:block text-gray-500">
-                  {post.postedBy.userName}
+                  {post.postedBy?.userName}
                 </p>
               </div>
             </Link>

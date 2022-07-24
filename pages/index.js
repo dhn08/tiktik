@@ -1,6 +1,6 @@
 import Head from "next/head";
 import axios from "axios";
-import { allPostsQuery } from "../utils/queries";
+import { allPostsQuery, topicPostsQuery } from "../utils/queries";
 import client from "../utils/client";
 import VideoCard from "../components/VideoCard";
 import NoResults from "../components/NoResults";
@@ -22,12 +22,17 @@ export default function Home({ videos }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps({ query: { topic } }) {
   // const response = await axios.get(`${process.env.URL}/api/post`);
-  const query = allPostsQuery();
+  let data;
+  if (topic) {
+    const query = topicPostsQuery(topic);
+    data = await client.fetch(query);
+  } else {
+    const query = allPostsQuery();
+    data = await client.fetch(query);
+  }
 
-  const data = await client.fetch(query);
-  console.log(data);
   return {
     props: { videos: data }, // will be passed to the page component as props
   };

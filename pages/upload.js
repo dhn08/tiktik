@@ -139,7 +139,7 @@ const Upload = () => {
           <select
             className="outline-none border-2 border-gray-200 text-base capitalize lg:p-4 p-2 rounded cursor-pointer"
             onChange={(e) => {
-              setCaption(e.target.value);
+              setCategory(e.target.value);
             }}
           >
             {topics.map((topic) => (
