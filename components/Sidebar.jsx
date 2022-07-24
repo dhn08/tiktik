@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -11,6 +11,10 @@ import Footer from "./Footer";
 import ErrorBoundary from "./ErrorBoundary";
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(true);
+  useEffect(() => {
+    console.log("Hello from slidebar");
+  }, []);
+
   const userProfile = false;
   const normalLink =
     "flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold text-[#F51997] rounded";
