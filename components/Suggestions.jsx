@@ -7,7 +7,10 @@ const Suggestions = () => {
   const { fetchAllUsers, allUsers } = useAuthStore();
   useEffect(() => {
     console.log("Inside useffect");
-    fetchAllUsers();
+    const getUsers = async () => {
+      await fetchAllUsers();
+    };
+    getUsers();
   }, [fetchAllUsers]);
   return (
     <div className="xl:border-b-2 border-gray-200 pb-4">
