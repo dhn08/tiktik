@@ -6,6 +6,7 @@ import useAuthStore from "../store/authStore";
 const Suggestions = () => {
   const { fetchAllUsers, allUsers } = useAuthStore();
   useEffect(() => {
+    console.log("Inside useffect");
     fetchAllUsers();
   }, [fetchAllUsers]);
   return (
