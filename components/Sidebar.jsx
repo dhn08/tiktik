@@ -13,15 +13,15 @@ import useAuthStore from "../store/authStore";
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(true);
   const { fetchAllUsers, allUsers } = useAuthStore();
-  useEffect(() => {
-    console.log("Inside useffect");
-    // const getUsers = async () => {
-    //   await fetchAllUsers();
-    // };
+  // useEffect(() => {
+  //   console.log("Inside useffect");
+  //   // const getUsers = async () => {
+  //   //   await fetchAllUsers();
+  //   // };
 
-    // getUsers();
-    fetchAllUsers();
-  }, []);
+  //   // getUsers();
+  //   fetchAllUsers();
+  // }, []);
 
   const userProfile = false;
   const normalLink =
