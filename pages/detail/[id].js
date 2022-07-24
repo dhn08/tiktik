@@ -114,7 +114,7 @@ const Detail = ({ postDetails }) => {
           <div>
             <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
               <div className="ml:20 md:w-20 md:h-20 w-16 h-16">
-                <Link href="/">
+                <Link href={`/profile/${post.postedBy?._id}`}>
                   <Image
                     width={62}
                     height={62}
@@ -124,7 +124,7 @@ const Detail = ({ postDetails }) => {
                 </Link>
               </div>
               <div>
-                <Link href="/">
+                <Link href={`/profile/${post.postedBy?._id}`}>
                   <div className="flex flex-col  gap-2">
                     <p className="flex items-center gap-2 md:text-base font-bold text-primary">
                       {post.postedBy.userName}
