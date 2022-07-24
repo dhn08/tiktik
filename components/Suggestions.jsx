@@ -15,7 +15,7 @@ const Suggestions = () => {
       </p>
       <div>
         {allUsers.slice(0, 6).map((user) => (
-          <Link key={user._id} href={`/profile/${user._id}`}>
+          <Link key={user?._id} href={`/profile/${user?._id}`}>
             <div className="flex gap-3 hover:bg-primary p-2 font-semibold rounded">
               <div className="w-8 h-8">
                 <Image
