@@ -41,6 +41,8 @@ const Detail = ({ postDetails }) => {
   useEffect(() => {
     if (post && videoRef?.current) {
       videoRef.current.muted = isMute;
+    } else {
+      return null;
     }
   }, [post, isMute]);
   const handleLike = async (like) => {
