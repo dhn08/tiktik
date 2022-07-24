@@ -17,7 +17,6 @@ import Comments from "../../components/Comments";
 const Detail = ({ postDetails }) => {
   const [post, setPost] = useState(postDetails);
   const [playing, setPlaying] = useState(false);
-
   const [isMute, setisMute] = useState(false);
   const { userProfile } = useAuthStore();
   const [comment, setComment] = useState("");
@@ -25,7 +24,11 @@ const Detail = ({ postDetails }) => {
   const videoRef = useRef(null);
   const router = useRouter();
   const { id } = router.query;
-
+  useEffect(() => {
+    if (post && videoRef?.current) {
+      return (videoRef.current.muted = isMute);
+    }
+  }, [post, isMute]);
   if (!post) {
     return null;
   }
@@ -38,13 +41,7 @@ const Detail = ({ postDetails }) => {
       setPlaying(true);
     }
   };
-  useEffect(() => {
-    if (post && videoRef?.current) {
-      videoRef.current.muted = isMute;
-    } else {
-      return null;
-    }
-  }, [post, isMute]);
+
   const handleLike = async (like) => {
     if (userProfile) {
       const { data } = await axios.put(`/api/like`, {
