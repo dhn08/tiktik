@@ -10,7 +10,7 @@ const authStore = (set) => ({
 
   fetchAllUsers: async () => {
     const response = await axios.get("https://tiktik-dhn.vercel.app/api/users");
-    console.log(response);
+    console.log("inside fetch all user :", response);
     set({ allUsers: response.data });
   },
 });

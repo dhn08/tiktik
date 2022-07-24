@@ -15,11 +15,12 @@ const Sidebar = () => {
   const { fetchAllUsers, allUsers } = useAuthStore();
   useEffect(() => {
     console.log("Inside useffect");
-    const getUsers = async () => {
-      await fetchAllUsers();
-    };
+    // const getUsers = async () => {
+    //   await fetchAllUsers();
+    // };
 
-    getUsers();
+    // getUsers();
+    fetchAllUsers();
   }, []);
 
   const userProfile = false;
