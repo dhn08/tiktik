@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { AiFillHome, AiOutlineMenu } from "react-icons/ai";
-import { ImCancelCircle } from "react-icons/Im";
+import { ImCancelCircle } from "react-icons/im";
 import { FcGoogle } from "react-icons/fc";
 import Discover from "./Discover";
 import Suggestions from "./Suggestions";
