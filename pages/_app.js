@@ -16,7 +16,7 @@ class ErrorBoundary extends React.Component {
 
   componentDidCatch(error, errorInfo) {
     // You can also log the error to an error reporting service
-    logErrorToMyService(error, errorInfo);
+    console.log(error, errorInfo);
   }
 
   render() {
@@ -28,6 +28,7 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
+
 function MyApp({ Component, pageProps }) {
   const [isSSR, setIsSSR] = useState(true);
   useEffect(() => {
@@ -35,8 +36,8 @@ function MyApp({ Component, pageProps }) {
   }, []);
   if (isSSR) return null;
   return (
-    <ErrorBoundary>
-      <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT}>
+    <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT}>
+      <ErrorBoundary>
         <div className="xl:w-[1200px] m-auto overflow-hidden h-[100vh]">
           <Navbar />
           <div className="flex gap-6 md:gap-20">
@@ -48,8 +49,8 @@ function MyApp({ Component, pageProps }) {
             </div>
           </div>
         </div>
-      </GoogleOAuthProvider>
-    </ErrorBoundary>
+      </ErrorBoundary>
+    </GoogleOAuthProvider>
   );
 }
 
