@@ -14,6 +14,7 @@ const Suggestions = () => {
         Suggested Accounts
       </p>
       <div>
+        {console.log(allUsers)}
         {allUsers.slice(0, 6).map((user) => (
           <Link key={user?._id} href={`/profile/${user?._id}`}>
             <div className="flex gap-3 hover:bg-primary p-2 font-semibold rounded">
