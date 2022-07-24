@@ -8,6 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 import Discover from "./Discover";
 import Suggestions from "./Suggestions";
 import Footer from "./Footer";
+import ErrorBoundary from "./ErrorBoundary";
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(true);
   const userProfile = false;
@@ -34,10 +35,15 @@ const Sidebar = () => {
                 </div>
               </Link>
             </div>
-
-            <Discover />
-            <Suggestions />
-            <Footer />
+            <ErrorBoundary>
+              <Discover />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <Suggestions />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <Footer />
+            </ErrorBoundary>
           </div>
         )}
       </div>

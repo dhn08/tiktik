@@ -3,32 +3,7 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import "../styles/globals.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    // You can also log the error to an error reporting service
-    console.log(error);
-    console.log(errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
-    }
-
-    return this.props.children;
-  }
-}
+import ErrorBoundary from "../components/ErrorBoundary";
 
 function MyApp({ Component, pageProps }) {
   const [isSSR, setIsSSR] = useState(true);
@@ -45,9 +20,7 @@ function MyApp({ Component, pageProps }) {
 
         <div className="flex gap-6 md:gap-20">
           <div className="h-[92vh] overflow-hidden xl:hover:overflow-auto">
-            <ErrorBoundary>
-              <Sidebar />
-            </ErrorBoundary>
+            <Sidebar />
           </div>
           <div className="mt-4 flex flex-col gap-10 overflow-y-auto h-[88vh] videos flex-1">
             <ErrorBoundary>
