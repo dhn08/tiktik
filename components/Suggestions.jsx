@@ -4,7 +4,7 @@ import Link from "next/link";
 import { GoVerified } from "react-icons/go";
 import useAuthStore from "../store/authStore";
 const Suggestions = () => {
-  const { allUsers } = useAuthStore();
+  const { allUsers, fetchAllUsers } = useAuthStore();
   // useEffect(() => {
   //   console.log("Inside useffect");
   //   const getUsers = async () => {
