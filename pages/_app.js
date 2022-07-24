@@ -38,19 +38,24 @@ function MyApp({ Component, pageProps }) {
   if (isSSR) return null;
   return (
     <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT}>
-      <ErrorBoundary>
-        <div className="xl:w-[1200px] m-auto overflow-hidden h-[100vh]">
+      <div className="xl:w-[1200px] m-auto overflow-hidden h-[100vh]">
+        <ErrorBoundary>
           <Navbar />
-          <div className="flex gap-6 md:gap-20">
-            <div className="h-[92vh] overflow-hidden xl:hover:overflow-auto">
+        </ErrorBoundary>
+
+        <div className="flex gap-6 md:gap-20">
+          <div className="h-[92vh] overflow-hidden xl:hover:overflow-auto">
+            <ErrorBoundary>
               <Sidebar />
-            </div>
-            <div className="mt-4 flex flex-col gap-10 overflow-y-auto h-[88vh] videos flex-1">
+            </ErrorBoundary>
+          </div>
+          <div className="mt-4 flex flex-col gap-10 overflow-y-auto h-[88vh] videos flex-1">
+            <ErrorBoundary>
               <Component {...pageProps} />
-            </div>
+            </ErrorBoundary>
           </div>
         </div>
-      </ErrorBoundary>
+      </div>
     </GoogleOAuthProvider>
   );
 }

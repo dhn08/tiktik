@@ -46,7 +46,7 @@ const Upload = () => {
           _type: "file",
           asset: {
             _type: "referene",
-            _ref: videoAsset._id,
+            _ref: videoAsset?._id,
           },
         },
         userId: userProfile?._id,
