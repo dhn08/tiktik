@@ -9,7 +9,7 @@ const authStore = (set) => ({
   removeUser: (user) => set({ userProfile: null }),
 
   fetchAllUsers: async () => {
-    const response = await axios.get("/api/users");
+    const response = await axios.get("https://tiktik-dhn.vercel.app/api/users");
     set({ allUsers: response.data });
   },
 });
