@@ -26,7 +26,7 @@ const Detail = ({ postDetails }) => {
   const { id } = router.query;
   useEffect(() => {
     if (post && videoRef?.current) {
-      return (videoRef.current.muted = isMute);
+      videoRef.current.muted = isMute;
     }
   }, [post, isMute]);
   if (!post) {
