@@ -6,17 +6,18 @@ import axios from "axios";
 import useAuthStore from "../store/authStore";
 import client from "../utils/client";
 import { topics } from "../utils/constants";
+import NoResults from "../components/NoResults";
 const Upload = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [videoAsset, setvideoAsset] = useState();
   const [photoAsset, setphotoAsset] = useState();
-
   const [wrongFileType, setwrongFileType] = useState(false);
   const [caption, setCaption] = useState("");
   const [category, setCategory] = useState(topics[0].name);
   const [savingPost, setsavingPost] = useState(false);
   const { userProfile } = useAuthStore();
   const router = useRouter();
+
   const handleDiscard = async () => {
     setCaption("");
     setvideoAsset("");
@@ -101,7 +102,7 @@ const Upload = () => {
       router.push("/");
     }
   };
-  return (
+  return userProfile ? (
     <div className="flex w-full justify-center h-full absolute left-0 top-[60px] mb-10 pt-10 lg:pt-20 bg-[#F8F8F8]">
       <div className="bg-white w-[80%] rounded-lg xl:h-[80vh] flex gap-6 flex-col lg:flex-row justify-between items-center p-14 pt-6">
         <div>
@@ -113,7 +114,7 @@ const Upload = () => {
           </div>
           <div
             className="border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center outline-none mt-10
-          w-[260px] h-[460px] p-10 cursor-pointer hover:border-red-300 hover:bg-gray-100"
+      w-[260px] h-[460px] p-10 cursor-pointer hover:border-red-300 hover:bg-gray-100"
           >
             {isLoading ? (
               <p>Uploading ...</p>
@@ -220,6 +221,8 @@ const Upload = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <NoResults text="Login First" />
   );
 };
 
