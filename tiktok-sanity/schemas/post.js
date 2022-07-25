@@ -9,6 +9,14 @@ export default {
       type: "string",
     },
     {
+      name: "image",
+      title: "Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    },
+    {
       name: "video",
       title: "Video",
       type: "file",

@@ -33,7 +33,7 @@ const Search = ({ videos }) => {
           onClick={(prev) => setisAccount(false)}
           className={`text-xl font-semibold cursor-pointer mt-2 ${video}`}
         >
-          Vedios
+          Posts
         </p>
       </div>
       {isAccount ? (
@@ -72,7 +72,7 @@ const Search = ({ videos }) => {
           {videos.length ? (
             videos.map((item, index) => <VideoCard post={item} key={index} />)
           ) : (
-            <NoResults text={`No vedio results for ${searchValue}`} />
+            <NoResults text={`No posts results for ${searchValue}`} />
           )}
         </div>
       )}

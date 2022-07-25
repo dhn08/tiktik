@@ -1,12 +1,17 @@
 import { BsCode, BsEmojiSunglasses } from "react-icons/bs";
 import { GiCakeSlice, GiGalaxy, GiLipstick } from "react-icons/gi";
-import { FaPaw, FaMedal, FaGamepad } from "react-icons/fa";
-import { BiMusic } from "react-icons/bi";
+import { FaPaw, FaMedal, FaGamepad, FaGlobe } from "react-icons/fa";
+import { BiMusic, BiTrendingUp } from "react-icons/bi";
+
 export const BASEURL = process.env.NEXT_PUBLIC_BASEURL;
 export const topics = [
   {
-    name: "coding",
-    icon: <BsCode />,
+    name: "travel",
+    icon: <FaGlobe />,
+  },
+  {
+    name: "trending",
+    icon: <BiTrendingUp />,
   },
   {
     name: "music",

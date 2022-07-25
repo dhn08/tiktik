@@ -16,7 +16,7 @@ export default function Home({ videos }) {
       {videos.length ? (
         videos.map((video) => <VideoCard key={video?._id} post={video} />)
       ) : (
-        <NoResults text={"No Videos"} />
+        <NoResults text={"No Posts"} />
       )}
     </div>
   );

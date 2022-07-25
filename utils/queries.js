@@ -2,6 +2,7 @@ export const allPostsQuery = () => {
   const query = `*[_type == "post"] | order(_createdAt desc){
         _id,
          caption,
+         image,
            video{
             asset->{
               _id,
@@ -33,6 +34,7 @@ export const postDetailQuery = (postId) => {
   const query = `*[_type == "post" && _id == '${postId}'][0]{
     _id,
      caption,
+     image,
        video{
         asset->{
           _id,
@@ -103,6 +105,7 @@ export const userCreatedPostsQuery = (userId) => {
   const query = `*[ _type == 'post' && userId == '${userId}'] | order(_createdAt desc){
     _id,
      caption,
+     image,
        video{
         asset->{
           _id,
@@ -134,6 +137,7 @@ export const searchPostsQuery = (searchTerm) => {
   const query = `*[_type == "post" && caption match '${searchTerm}*' || topic match '${searchTerm}*'] {
     _id,
      caption,
+     image,
        video{
         asset->{
           _id,
@@ -164,6 +168,7 @@ export const topicPostsQuery = (topic) => {
   const query = `*[_type == "post" && topic match '${topic}*'] {
     _id,
      caption,
+     image,
        video{
         asset->{
           _id,

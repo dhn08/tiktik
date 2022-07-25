@@ -8,7 +8,7 @@ import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import axios from "axios";
 import { BASEURL } from "../../utils/constants";
 import { postDetailQuery } from "../../utils/queries";
-import client from "../../utils/client";
+import client, { urlFor } from "../../utils/client";
 import { GoVerified } from "react-icons/go";
 import useAuthStore from "../../store/authStore";
 import LikeButton from "../../components/LikeButton";
@@ -81,16 +81,23 @@ const Detail = ({ postDetails }) => {
         </div>
         <div className="relative">
           <div className="lg:h-[100vh] h-[60vh]">
-            <video
-              className="h-full cursor-pointer"
-              ref={videoRef}
-              loop
-              onClick={onVideoClick}
-              src={post.video.asset.url}
-            />
+            {post.video ? (
+              <video
+                className="h-full cursor-pointer"
+                ref={videoRef}
+                loop
+                onClick={onVideoClick}
+                src={post.video.asset.url}
+              />
+            ) : (
+              <img
+                className="h-full cursor-pointer"
+                src={urlFor(post.image)}
+              ></img>
+            )}
           </div>
           <div className="absolute top-[45%] left-[45%] cursor-pointer">
-            {!playing && (
+            {!playing && post.video && (
               <button onClick={onVideoClick}>
                 <BsFillPlayFill className="text-white text-6xl lg:text-8xl" />
               </button>
@@ -98,15 +105,16 @@ const Detail = ({ postDetails }) => {
           </div>
         </div>
         <div className="absolute bottom-5 lg:bottom-10 right-5 lg:right-10 cursor-pointer">
-          {isMute ? (
-            <button onClick={() => setisMute(false)}>
-              <HiVolumeOff className="text-white text-2xl lg:text-4xl" />
-            </button>
-          ) : (
-            <button onClick={() => setisMute(true)}>
-              <HiVolumeUp className="text-white text-2xl lg:text-4xl" />
-            </button>
-          )}
+          {post.video &&
+            (isMute ? (
+              <button onClick={() => setisMute(false)}>
+                <HiVolumeOff className="text-white text-2xl lg:text-4xl" />
+              </button>
+            ) : (
+              <button onClick={() => setisMute(true)}>
+                <HiVolumeUp className="text-white text-2xl lg:text-4xl" />
+              </button>
+            ))}
         </div>
       </div>
       <div className="relative w-[1000px] md:w-[900px] lg:w-[700px]">

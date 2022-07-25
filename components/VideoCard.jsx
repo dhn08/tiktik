@@ -5,12 +5,13 @@ import { GoVerified } from "react-icons/go";
 import { BsPlay } from "react-icons/bs";
 import Image from "next/image";
 import Link from "next/link";
-
+import { urlFor } from "../utils/client";
 const VideoCard = ({ post }) => {
   const [isHover, setIsHover] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [isMute, setIsMute] = useState(false);
   const videoRef = useRef(null);
+
   // console.log("VideoVard:", post);
   const onVideoPress = () => {
     if (playing) {
@@ -66,17 +67,24 @@ const VideoCard = ({ post }) => {
       </div>
       <div className="lg:ml-20 flex  gap-4 relative">
         <div
-          onMouseEnter={() => setIsHover(true)}
-          onMouseLeave={() => setIsHover(false)}
+          onMouseEnter={() => post.video && setIsHover(true)}
+          onMouseLeave={() => post.video && setIsHover(false)}
           className="rounded-3xl"
         >
           <Link href={`/detail/${post._id}`} passHref>
             <a>
-              <video
-                ref={videoRef}
-                className="lg:w-[600px] h-[300px] md:h[400px] lg:[530px] w-[200px] rounded-2xl cursor-pointer bg-gray-100"
-                src={post.video.asset.url}
-              ></video>
+              {post.video ? (
+                <video
+                  ref={videoRef}
+                  className="lg:w-[600px] h-[300px] md:h[400px] lg:[530px] w-[200px] rounded-2xl cursor-pointer bg-gray-100"
+                  src={post.video.asset.url}
+                ></video>
+              ) : (
+                <img
+                  className="lg:w-[600px] h-[300px] md:h[400px] lg:[530px] w-[200px] rounded-2xl cursor-pointer bg-gray-100"
+                  src={urlFor(post.image)}
+                ></img>
+              )}
             </a>
           </Link>
           {isHover && (
