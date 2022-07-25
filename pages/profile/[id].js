@@ -18,9 +18,9 @@ const Profile = ({ user, userVideo, likedVideo }) => {
   const likes = showUserVideos ? "text-gray-400" : "border-b-2 border-black";
   const router = useRouter();
   const { id } = router.query;
-  console.log("user", user);
-  console.log("userVideo", userVideo);
-  console.log("likedv", likedVideo);
+  // console.log("user", user);
+  // console.log("userVideo", userVideo);
+  // console.log("likedv", likedVideo);
   useEffect(() => {
     if (showUserVideos) {
       setVideoList(userVideo);

@@ -76,6 +76,8 @@ const Upload = () => {
         },
         topic: category,
       };
+      await axios.post("/api/post", document);
+      router.push("/");
     } else if (caption && photoAsset?._id && category) {
       setsavingPost(true);
       document = {
@@ -95,9 +97,9 @@ const Upload = () => {
         },
         topic: category,
       };
+      await axios.post("/api/post", document);
+      router.push("/");
     }
-    await axios.post("/api/post", document);
-    router.push("/");
   };
   return (
     <div className="flex w-full justify-center h-full absolute left-0 top-[60px] mb-10 pt-10 lg:pt-20 bg-[#F8F8F8]">
